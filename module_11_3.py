@@ -1,3 +1,4 @@
+import inspect
 from pprint import pprint
 
 
@@ -8,7 +9,7 @@ def introspection_info(obj):
     for i in attributes:
         if callable(getattr(obj, i)):
             methods.append(i)
-    module = obj.__class__.__module__
+    module = inspect.getmodule(introspection_info)
     info = {'type': obj_type, 'attributes': attributes, 'methods': methods, 'module': module},
     return info
 
